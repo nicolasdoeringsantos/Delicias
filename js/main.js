@@ -1,0 +1,36 @@
+const WHATS_NUMBER = '5554984163345';
+
+const products = [
+  { name: 'Pão rocambole de beterraba', price: 'R$ 18,00', image: 'images/paobete.png' },
+  { name: 'Biscoitos amanteigados', price: 'R$ 22,00', image: 'images/bolachamanteiga.png' },
+  { name: 'Pão integral', price: 'R$ 16,00', image: 'images/paointegral.png' },
+  { name: 'Massa caseira', price: 'R$ 8,00', image: 'images/massa.jpg' },
+  { name: 'Bolachas glaceadas', price: 'R$ 12,00', image: 'images/bolacha1.png' },
+  { name: 'Rosquinha de manteiga com chocolate', price: 'R$ 20,00', image: 'images/bolachacho.png' },
+  { name: 'Bolacha de manteiga com goiabada', price: 'R$ 15,00', image: 'images/bolachagoi.png' },
+  { name: 'Pão de milho', price: 'R$ 7,00', image: 'images/paomilho.png' }
+];
+
+function buildMenu() {
+  const grid = document.getElementById('menuGrid');
+  grid.innerHTML = products.map((product) => {
+    const message = encodeURIComponent(`Olá! Tenho interesse em ${product.name} (${product.price}). Poderia me passar mais informações?`);
+    return `<article class="product-card"><div class="product-photo"><img src="${product.image}" alt="${product.name}" loading="lazy"></div><div class="product-info"><h3>${product.name}</h3><strong>${product.price}</strong><a href="https://wa.me/${WHATS_NUMBER}?text=${message}" target="_blank" rel="noopener">Encomendar <i data-lucide="arrow-up-right"></i></a></div></article>`;
+  }).join('');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  buildMenu();
+  lucide.createIcons();
+
+  const button = document.querySelector('.menu-button');
+  const nav = document.querySelector('.main-nav');
+  button.addEventListener('click', () => {
+    const open = nav.classList.toggle('is-open');
+    button.setAttribute('aria-expanded', open);
+    button.innerHTML = `<i data-lucide="${open ? 'x' : 'menu'}"></i>`;
+    lucide.createIcons();
+  });
+
+  nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => nav.classList.remove('is-open')));
+});
