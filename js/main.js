@@ -10,10 +10,10 @@ import paoMilho from '../images/paomilho.png';
 const WHATS_NUMBER = '5554984163345';
 
 const products = [
-  { name: 'Pão rocambole de beterraba', price: 'R$ 10,00', image: paoBeterraba },
+  { name: 'Pão rocambole de beterraba', price: 'R$ 12,00', image: paoBeterraba },
   { name: 'Biscoitos amanteigados', price: 'R$ 15,00', image: bolachaManteiga },
-  { name: 'Pão integral', price: 'R$ 10,00', image: paoIntegral },
-  { name: 'Massa caseira', price: 'R$ 8,00', image: massaCaseira },
+  { name: 'Pão integral', price: 'R$ 12,00', image: paoIntegral },
+  { name: 'Massa caseira', price: 'R$ 10,00 / 500g', image: massaCaseira },
   { name: 'Bolachas glaceadas', price: 'R$ 15,00', image: bolachaGlaceada },
   { name: 'Rosquinha de manteiga com chocolate', price: 'R$ 15,00', image: rosquinhaChocolate },
   { name: 'Bolacha de manteiga com goiabada', price: 'R$ 15,00', image: bolachaGoiabada },
