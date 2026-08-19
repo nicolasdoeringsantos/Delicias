@@ -1,11 +1,11 @@
-import paoBeterraba from '../images/paobete.png';
-import bolachaManteiga from '../images/bolachamanteiga.png';
-import paoIntegral from '../images/paointegral.png';
-import massaCaseira from '../images/massa.jpg';
-import bolachaGlaceada from '../images/bolacha1.png';
-import rosquinhaChocolate from '../images/bolachacho.png';
-import bolachaGoiabada from '../images/bolachagoi.png';
-import paoMilho from '../images/paomilho.png';
+import paoBeterraba from '../images/paobete.webp';
+import bolachaManteiga from '../images/bolachamanteiga.webp';
+import paoIntegral from '../images/paointegral.webp';
+import massaCaseira from '../images/massa.webp';
+import bolachaGlaceada from '../images/bolacha1.webp';
+import rosquinhaChocolate from '../images/bolachacho.webp';
+import bolachaGoiabada from '../images/bolachagoi.webp';
+import paoMilho from '../images/paomilho.webp';
 
 const WHATS_NUMBER = '5554984163345';
 
@@ -36,8 +36,10 @@ function cartTotal() {
 
 function buildMenu() {
   const grid = document.getElementById('menuGrid');
-  grid.innerHTML = products.map((product) => `
-    <article class="product-card">
+  grid.innerHTML = products.map((product, index) => {
+    const delay = Math.min(index % 4, 3) * 70;
+    return `
+    <article class="product-card reveal" style="--d:${delay}ms">
       <div class="product-photo"><img src="${product.image}" alt="${product.name}" loading="lazy"></div>
       <div class="product-info">
         <h3>${product.name}</h3>
@@ -45,7 +47,25 @@ function buildMenu() {
         <button type="button" class="add-to-cart" data-id="${product.id}"><i data-lucide="cart-plus"></i>Adicionar</button>
       </div>
     </article>
-  `).join('');
+  `;
+  }).join('');
+}
+
+function initReveal() {
+  const items = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    items.forEach((el) => el.classList.add('is-visible'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  items.forEach((el) => io.observe(el));
 }
 
 function renderCart() {
@@ -56,16 +76,23 @@ function renderCart() {
   const items = document.getElementById('cartItems');
   const empty = document.getElementById('cartEmpty');
   const foot = document.getElementById('cartFoot');
+  const bar = document.getElementById('cartBar');
 
   if (count === 0) {
     items.innerHTML = '';
     empty.hidden = false;
     foot.hidden = true;
+    bar.hidden = true;
+    document.body.classList.remove('has-cart');
     return;
   }
 
   empty.hidden = true;
   foot.hidden = false;
+  bar.hidden = false;
+  document.body.classList.add('has-cart');
+  document.getElementById('cartBarTotal').textContent = formatBRL(cartTotal());
+  document.getElementById('cartBarCount').textContent = count;
   items.innerHTML = [...cart.entries()].map(([id, qty]) => {
     const product = products.find((p) => p.id === id);
     return `
@@ -119,6 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
   buildMenu();
   lucide.createIcons();
   renderCart();
+  initReveal();
 
   const button = document.querySelector('.menu-button');
   const nav = document.querySelector('.main-nav');
@@ -132,6 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
   nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => nav.classList.remove('is-open')));
 
   document.getElementById('cartOpen').addEventListener('click', openCart);
+  document.getElementById('cartBarOpen').addEventListener('click', openCart);
   document.getElementById('cartClose').addEventListener('click', closeCart);
   document.getElementById('cartOverlay').addEventListener('click', closeCart);
   document.addEventListener('keydown', (e) => {
@@ -162,4 +191,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.getElementById('cartCheckout').addEventListener('click', checkout);
+
+  const backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', () => {
+    backTop.classList.toggle('is-visible', window.scrollY > 600);
+  }, { passive: true });
+  backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 });
