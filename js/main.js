@@ -20,8 +20,8 @@ const products = [
   { id: 'rosquinha-chocolate', name: 'Biscoito amanteigado de milho coberto com chocolate meio amargo', price: 15, priceLabel: 'R$ 15,00', image: rosquinhaChocolate },
   { id: 'bolacha-goiabada', name: 'Bolacha de manteiga com goiabada', price: 15, priceLabel: 'R$ 15,00', image: bolachaGoiabada },
   { id: 'pao-milho', name: 'Pão de milho', price: 10, priceLabel: 'R$ 10,00', image: paoMilho },
-  { id: 'massa-integral', name: 'Massa integral', price: 12, priceLabel: 'R$ 12,00 / 200g', image: massaIntegral },
-  { id: 'massa-integral-beterraba', name: 'Massa integral de beterraba', price: 12, priceLabel: 'R$ 12,00 / 200g', image: massaBeterraba }
+  { id: 'massa-integral', name: 'Massa integral', price: 12, priceLabel: 'R$ 12,00 / 500g', image: massaIntegral },
+  { id: 'massa-integral-beterraba', name: 'Massa integral de beterraba', price: 12, priceLabel: 'R$ 12,00 / 500g', image: massaBeterraba }
 ];
 
 const cart = new Map();
