@@ -35,7 +35,7 @@ delicias-da-nossa-casa/
 
 | O que | Onde no `index.html` |
 |---|---|
-| Número de WhatsApp | constante `WHATS_NUMBER` no `<script>` + os textos "(54) 98416-3345" espalhados pelo HTML |
+| Número de WhatsApp | constante `WHATS_NUMBER` no `js/main.js` + os textos "(54) 9952-4097" espalhados pelo HTML |
 | Lista de produtos (nome, preço, foto) | array `products` no `<script>` |
 | Texto da "Nossa História" | seção `<div class="story">` |
 | Cores | variáveis no topo do `<style>`, dentro de `:root { ... }` |

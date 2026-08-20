@@ -6,8 +6,10 @@ import bolachaGlaceada from '../images/bolacha1.webp';
 import rosquinhaChocolate from '../images/bolachacho.webp';
 import bolachaGoiabada from '../images/bolachagoi.webp';
 import paoMilho from '../images/paomilho.webp';
+import massaIntegral from '../images/massaintegral.webp';
+import massaBeterraba from '../images/massabeterraba.webp';
 
-const WHATS_NUMBER = '5554984163345';
+const WHATS_NUMBER = '555499524097';
 
 const products = [
   { id: 'pao-beterraba', name: 'Pão rocambole de beterraba', price: 12, priceLabel: 'R$ 12,00', image: paoBeterraba },
@@ -15,9 +17,11 @@ const products = [
   { id: 'pao-integral', name: 'Pão integral', price: 12, priceLabel: 'R$ 12,00', image: paoIntegral },
   { id: 'massa-caseira', name: 'Massa caseira', price: 10, priceLabel: 'R$ 10,00 / 500g', image: massaCaseira },
   { id: 'bolachas-glaceadas', name: 'Bolachas glaceadas', price: 15, priceLabel: 'R$ 15,00', image: bolachaGlaceada },
-  { id: 'rosquinha-chocolate', name: 'Rosquinha de manteiga com chocolate', price: 15, priceLabel: 'R$ 15,00', image: rosquinhaChocolate },
+  { id: 'rosquinha-chocolate', name: 'Biscoito amanteigado de milho coberto com chocolate meio amargo', price: 15, priceLabel: 'R$ 15,00', image: rosquinhaChocolate },
   { id: 'bolacha-goiabada', name: 'Bolacha de manteiga com goiabada', price: 15, priceLabel: 'R$ 15,00', image: bolachaGoiabada },
-  { id: 'pao-milho', name: 'Pão de milho', price: 10, priceLabel: 'R$ 10,00', image: paoMilho }
+  { id: 'pao-milho', name: 'Pão de milho', price: 10, priceLabel: 'R$ 10,00', image: paoMilho },
+  { id: 'massa-integral', name: 'Massa integral', price: 12, priceLabel: 'R$ 12,00 / 200g', image: massaIntegral },
+  { id: 'massa-integral-beterraba', name: 'Massa integral de beterraba', price: 12, priceLabel: 'R$ 12,00 / 200g', image: massaBeterraba }
 ];
 
 const cart = new Map();
